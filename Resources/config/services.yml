@@ -1,0 +1,13 @@
+services:
+
+    # listener
+    E7\MetaBundle\EventListener\MetaListener:
+        arguments:
+            $tokenStorage: '@security.token_storage'
+            $logger: '@logger'
+        tags:
+#             - { name: doctrine.orm.entity_listener, event: postLoad, entity: App\E7\MetaBundle\Entity\Meta }
+#             - { name: doctrine.event_listener, event: postLoad }
+             - { name: doctrine.event_listener, event: prePersist }
+             - { name: doctrine.event_listener, event: postPersist }
+             - { name: doctrine.event_listener, event: postUpdate }
