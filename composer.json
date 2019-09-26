@@ -1,0 +1,22 @@
+{
+    "name": "ebene7/symfony-meta-bundle",
+    "description": "E7 Symfony Meta Bundle",
+    "homepage": "https://github.com/ebene7/symfony-meta-bundle",
+    "authors": [
+        {
+            "name": "Daniel Barty",
+            "email": "daniel@ebene7.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "E7\\MetaBundle\\": ""
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "E7\\MetaBundle\\Tests\\": "Tests/"
+        }
+    }
+}
