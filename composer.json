@@ -2,6 +2,7 @@
     "name": "ebene7/symfony-meta-bundle",
     "description": "E7 Symfony Meta Bundle",
     "homepage": "https://github.com/ebene7/symfony-meta-bundle",
+    "license": "MIT",
     "authors": [
         {
             "name": "Daniel Barty",
