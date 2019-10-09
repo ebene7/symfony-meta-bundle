@@ -1,5 +1,20 @@
 services:
 
+    E7\MetaBundle\DBAL\Converters\ChainConverter:
+        public: true
+        arguments:
+            - !tagged doctrine.mapping.converter
+
+    E7\MetaBundle\DBAL\Converters\EntityToStringConverter:
+        tags:
+            - { name: 'doctrine.mapping.converter', priority: 50 }
+
+    E7\MetaBundle\DBAL\Converters\StringToEntityConverter:
+        arguments:
+            - '@doctrine.orm.entity_manager'
+        tags:
+            - { name: 'doctrine.mapping.converter', priority: 50 }
+            
     # listener
     E7\MetaBundle\EventListener\MetaListener:
         arguments:
@@ -11,3 +26,11 @@ services:
              - { name: doctrine.event_listener, event: prePersist }
              - { name: doctrine.event_listener, event: postPersist }
              - { name: doctrine.event_listener, event: postUpdate }
+             
+    E7\MetaBundle\EventListener\MappingListener:
+        arguments:
+            - '@service_container'
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+            - { name: doctrine.event_listener, event: !php/const:\E7\MetaBundle\DBAL\Event\TypeMapperEventArgs::NAME }
+
