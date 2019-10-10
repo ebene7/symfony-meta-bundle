@@ -8,7 +8,7 @@ use E7\MetaBundle\Shared\UserInterface;
 trait OwnerPropertyTrait 
 {
     /**
-     * @ORM\Column(name="owner_id", type="string", length=36)
+     * @ORM\Column(name="owner_id", type="entitystring")
      * @var UserInterface
      */
     private $owner;
