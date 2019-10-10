@@ -2,9 +2,9 @@
 
 namespace E7\MetaBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 use E7\MetaBundle\Entity\Traits;
 use E7\MetaBundle\Shared\MetaInterface;
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Meta entity

@@ -2,6 +2,8 @@
 
 namespace E7\MetaBundle\Shared;
 
+use E7\MetaBundle\Shared\UserInterface;
+
 trait OwnerAccessTrait
 {
     /**

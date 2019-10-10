@@ -8,7 +8,7 @@ use E7\MetaBundle\Shared\UserInterface;
 trait ModifierPropertyTrait 
 {
     /**
-     * @ORM\Column(name="modifier_id", type="string", length=36)
+     * @ORM\Column(name="modifier_id", type="entitystring")
      * 
      * @var UserInterface
      */
