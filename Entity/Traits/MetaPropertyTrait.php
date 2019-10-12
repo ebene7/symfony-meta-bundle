@@ -2,9 +2,14 @@
 
 namespace E7\MetaBundle\Entity\Traits;
 
-use E7\MetaBundle\Shared\MetaInterface;
 use Doctrine\ORM\Mapping as ORM;
+use E7\MetaBundle\Shared\MetaInterface;
 
+/**
+ * MetaPropertyTrait
+ * 
+ * This trait implements the meta property for meta aware entities
+ */
 trait MetaPropertyTrait
 {
     /**

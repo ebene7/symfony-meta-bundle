@@ -15,10 +15,9 @@ use E7\MetaBundle\Shared\MetaInterface;
 class Meta implements MetaInterface
 {
     use Traits\OwnerTrait;
-    use Traits\CreatorTrait;
-    use Traits\CreatedAtTrait;
-    use Traits\ModifierTrait;
-    use Traits\ModifiedAtTrait;
+    use Traits\CreatedTrait;
+    use Traits\ModifiedTrait;
+    use Traits\MetaTypeTrait;
     
     /**
      * @ORM\Id
@@ -29,11 +28,17 @@ class Meta implements MetaInterface
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MetaType", cascade={"persist"})
-     * @ORM\JoinColumn(name="type_id")
+     * @var integer
+     *
+     * @ORM\Column(name="entity_id", type="string", length=36, nullable=true)
      */
-    private $type;
+    private $entityId;
     
+    public function __construct()
+    {
+        $this->setCreatedAt();
+    }
+
     /**
      * Get id
      *
@@ -45,25 +50,25 @@ class Meta implements MetaInterface
     }
 
     /**
-     * Set type
+     * Set entityId
      *
-     * @param MetaType $type
+     * @param string $entityId
      * @return Meta
      */
-    public function setType(MetaType $type = null)
+    public function setEntityId($entityId)
     {
-        $this->type = $type;
+        $this->entityId = $entityId;
 
         return $this;
     }
 
     /**
-     * Get type
+     * Get entityId
      *
-     * @return MetaType
+     * @return string
      */
-    public function getType()
+    public function getEntityId()
     {
-        return $this->type;
+        return $this->entityId;
     }
 }
