@@ -34,11 +34,6 @@ class Meta implements MetaInterface
      */
     private $entityId;
     
-    public function __construct()
-    {
-        $this->setCreatedAt();
-    }
-
     /**
      * Get id
      *

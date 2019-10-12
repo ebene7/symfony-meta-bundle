@@ -2,6 +2,10 @@
 
 namespace E7\MetaBundle\Shared;
 
+use DateTime;
+use DateTimeInterface;
+use E7\MetaBundle\Shared\UserInterface;
+
 /**
  * ModifiedAccessTrait
  * 
@@ -28,7 +32,7 @@ trait ModifiedAccessTrait
      *
      * @return UserInterface
      */
-    public function getModifier(): UserInterface
+    public function getModifier()
     {
         return $this->modifier;
     }
@@ -41,7 +45,7 @@ trait ModifiedAccessTrait
      */
     public function setModifiedAt(DateTimeInterface $modifiedAt = null)
     {
-        $this->modifiedAt = $modifiedAt ?: new DateTime();
+        $this->modifiedAt = $modifiedAt;
 
         return $this;
     }

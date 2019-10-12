@@ -21,7 +21,7 @@ trait CreatedAccessTrait
      * @param UserInterface $creator
      * @return self
      */
-    public function setCreator(UserInterface $creator = null)
+    public function setCreator(UserInterface $creator =  null)
     {
         $this->creator = $creator;
         
@@ -72,7 +72,7 @@ trait CreatedAccessTrait
     public function markCreated(
         UserInterface $creator, 
         DateTimeInterface $createdAt = null,
-        boolean $overrideCreator = false
+        $overrideCreator = false
     ) {
         if (false === $overrideCreator && null !== $this->getCreator()) {
             throw new \Exception();
