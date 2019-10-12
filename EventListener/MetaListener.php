@@ -2,18 +2,23 @@
 
 namespace E7\MetaBundle\EventListener;
 
-use E7\UserBundle\Entity\User;
+use E7\MetaBundle\Entity\Meta;
 use E7\MetaBundle\Entity\MetaType;
-use E7\MetaBundle\Entity\MetaAwareInterface;
+use E7\MetaBundle\Shared\MetaAwareInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Psr\Log\LoggerInterface;
+use DateTime;
+use E7\MetaBundle\DBAL\Converters\ChainConverter;
 
+/**
+ * MetaListener
+ */
 class MetaListener
 {
-    /** @var TokenStorageInterface */
-    private $tokenStorage;
+    /** @var ChainConverter */
+    private $converter;
 
     /** @var $logger LoggerInterface */
     private $logger;
@@ -21,14 +26,14 @@ class MetaListener
     /**
      * Constructor
      *
-     * @param TokenStorageInterface $tokenStorage
+     * @param ChainConverter $tokenStorage
      * @param LoggerInterface $logger
      */
     public function __construct(
-        TokenStorageInterface $tokenStorage,
+        ChainConverter $converter,
         LoggerInterface $logger
     ) {
-        $this->tokenStorage = $tokenStorage;
+        $this->converter = $converter;
         $this->logger = $logger;
     }
 
@@ -47,12 +52,14 @@ class MetaListener
             return;
         }
 
-        $user = $this->getUser($em);
+//        $user = $this->getUser($em);
+        $user = $entity->getOwner();
 
         $entity->getMeta()
                ->setType($this->getMetaType($entity, $em))
                ->setOwner($user)
-               ->setCreator($user);
+               ->setCreator($user)
+               ->setCreatedAt(new DateTime());
     }
 
     /**
@@ -77,8 +84,6 @@ class MetaListener
     }
 
     /**
-     * preUpdate
-     *
      * @param LifecycleEventArgs $event
      */
     public function preUpdate(LifecycleEventArgs $event)
@@ -86,22 +91,53 @@ class MetaListener
         /* @var $entity MetaAwareInterface */
         $em = $event->getEntityManager();
         $entity = $event->getEntity();
+        
+        if (!$this->acceptEntity($entity)) {
+            return;
+        }
+        
+        if (null === $entity->getMeta()) {
+            $meta = new Meta();
+            $meta
+                ->setType($this->getMetaType($entity, $em))
+                ->setOwner($user)
+                ->setCreator($user)
+                ->setCreatedAt(new DateTime());
+            $entity->setMeta($meta);
+        }
+    }
 
+    /**
+     * @param LifecycleEventArgs $event
+     */
+    public function postUpdate(LifecycleEventArgs $event)
+    {
+        /* @var $entity MetaAwareInterface */
+        $em = $event->getEntityManager();
+        $entity = $event->getEntity();
+        
         if (!$this->acceptEntity($entity)) {
             return;
         }
 
+        $user = $this->getUser();
+        
+        if (null === ($meta = $entity->getMeta())) {
+            $meta = new Meta();
+            $meta
+                ->setCreator($user)
+                ->setCreatedAt()
+                ->setOwner($user);
+        }
+        
+        $meta    
+            ->setModifier($meta->getOwner())
+            ->setModifiedAt(new DateTime());
 
-        $meta = $entity->getMeta()->setModifier($this->getUser($em));
-
-        $this->logger->debug('preUpdate eId='.$entity->getId().' eT=' . get_class($entity) . 'mId=' . $meta->getId());
-
+        $this->logger->debug('preUpdate eId='.$entity->getId().' eT=' . get_class($entity) 
+                . 'mId=' . $meta->getId());
         $em->persist($meta);
         $em->flush();
-    }
-
-    public function postUpdate(LifecycleEventArgs $event)
-    {
     }
 
     /**
@@ -141,16 +177,22 @@ class MetaListener
      */
     protected function getUser(EntityManagerInterface $em)
     {
-        $user = null;
+        
+//        App\Entity\Person:35
+        
+        return $this->converter->convert('App\Entity\Person:35');
+//        $user = null;
 
-        if (null !== ($token =$this->tokenStorage->getToken())) {
-            $user = $token->getUser();
-        }
-
-        if(!$user instanceof User) {
-            $user = $em->getRepository(User::class)
-                       ->findOneBy(array('username' => 'system'));
-        }
+////        return new TestUser();
+//        
+//        if (null !== ($token =$this->tokenStorage->getToken())) {
+//            $user = $token->getUser();
+//        }
+//
+//        if(!$user instanceof User) {
+//            $user = $em->getRepository(User::class)
+//                       ->findOneBy(array('username' => 'system'));
+//        }
 
         return $user;
     }

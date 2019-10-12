@@ -1,19 +1,17 @@
 <?php
 
-namespace E7\MetaBundle\Entity\Traits;
+namespace E7\MetaBundle\Shared;
 
-use E7\MetaBundle\Entity\Meta;
 use E7\MetaBundle\Shared\MetaInterface;
-use Doctrine\ORM\Mapping as ORM;
 
-trait MetaAwareTrait
+/**
+ * MetaAccessTrait
+ * 
+ * This trait implements the E7\MetaBundle\Shared\MetaAwareInterface with all
+ * shared accessmethods
+ */
+trait MetaAccessTrait
 {
-    /**
-     * @ORM\OneToOne(targetEntity="E7\MetaBundle\Entity\Meta", cascade={"all"})
-     * @var MetaInterface
-     */
-    private $meta;
-
     /**
      * Set meta
      *

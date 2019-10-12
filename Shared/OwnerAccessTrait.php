@@ -4,6 +4,12 @@ namespace E7\MetaBundle\Shared;
 
 use E7\MetaBundle\Shared\UserInterface;
 
+/**
+ * OwnerAccessTrait
+ * 
+ * This trait implements the E7\MetaBundle\Shared\OwnerInterface with all
+ * shared accessmethods
+ */
 trait OwnerAccessTrait
 {
     /**
