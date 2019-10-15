@@ -17,14 +17,14 @@ interface CreatedInterface
      * @param UserInterface $creator
      * @return CreatorInterface
      */
-    public function setCreator(UserInterface $creator = null): CreatorInterface;
+    public function setCreator(UserInterface $creator = null);
 
     /**
      * Get creator
      *
      * @return UserInterface
      */
-    public function getCreator(): UserInterface;
+    public function getCreator();
 
     /**
      * Set createdAt
@@ -32,14 +32,14 @@ interface CreatedInterface
      * @param DateTimeInterface $createdAt
      * @return CreatorInterface
      */
-    public function setCreatedAt(DateTimeInterface $createdAt): CreatorInterface;
+    public function setCreatedAt(DateTimeInterface $createdAt);
 
     /**
      * Get createdAt
      *
      * @return DateTimeInterface
      */
-    public function getCreatedAt(): DateTimeInterface;
+    public function getCreatedAt();
     
     /**
      * 
@@ -52,6 +52,6 @@ interface CreatedInterface
     public function markCreated(
         UserInterface $creator, 
         DateTimeInterface $createdAt = null,
-        boolean $overrideCreator = false
-    ): CreatorInterface;
+        $overrideCreator = false
+    );
 }
