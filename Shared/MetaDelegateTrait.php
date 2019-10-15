@@ -93,7 +93,7 @@ trait MetaDelegateTrait
     public function markCreated(
         UserInterface $creator, 
         DateTimeInterface $createdAt = null,
-        boolean $overrideCreator = false
+        $overrideCreator = false
     ) {
         $this->getMeta()->markCreated($creator, $createdAt, $overrideCreator);
         
