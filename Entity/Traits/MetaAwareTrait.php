@@ -32,7 +32,7 @@ trait MetaAwareTrait
      *
      * @return MetaInterface
      */
-    public function getMeta(): MetaInterface
+    public function getMeta(): ?MetaInterface
     {
         return $this->meta;
     }

@@ -2,6 +2,7 @@
 
 namespace E7\MetaBundle\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use E7\MetaBundle\Entity\Traits;
 use E7\MetaBundle\Shared\MetaInterface;
@@ -36,7 +37,7 @@ class Meta implements MetaInterface
     
     public function __construct()
     {
-        $this->setCreatedAt();
+        $this->setCreatedAt(new DateTime());
     }
 
     /**

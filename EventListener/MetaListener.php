@@ -55,7 +55,11 @@ class MetaListener
 //        $user = $this->getUser($em);
         $user = $entity->getOwner();
 
-        $entity->getMeta()
+        if (null === ($meta = $entity->getMeta())) {
+            $meta = new Meta();
+            $entity->setMeta($meta);
+        }
+        $meta
                ->setType($this->getMetaType($entity, $em))
                ->setOwner($user)
                ->setCreator($user)
