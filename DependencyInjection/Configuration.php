@@ -17,7 +17,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('e7_meta');
         $rootNode = $treeBuilder->root('e7_meta');
 
         // Here you should define the parameters that are allowed to
