@@ -6,5 +6,5 @@ trait MetaAccessTrait
 {
     use OwnerTrait;
     use CreatedTrait;
-    use ModifiedAtTrait;
+    use ModifiedTrait;
 }
