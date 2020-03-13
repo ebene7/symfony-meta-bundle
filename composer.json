@@ -10,7 +10,6 @@
         }
     ],
     "require": {
-        "doctrine/orm":"v2.6.*"
     },
     "require-dev": {
         "phpunit/phpunit": "7.5.*",
