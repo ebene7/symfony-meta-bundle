@@ -14,13 +14,13 @@ use E7\MetaBundle\Shared\UserInterface;
 trait CreatedPropertyTrait
 {
     /**
-     * @ORM\Column(name="creator_id", type="entitystring")
+     * @ORM\Column(name="creator_id", type="entitystring", nullable=true)
      * @var UserInterface
      */
     private $creator;
 
     /**
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      * @var DateTimeInterface
      */
     private $createdAt;
