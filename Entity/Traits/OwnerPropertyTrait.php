@@ -3,7 +3,6 @@
 namespace E7\MetaBundle\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-//use E7\MetaBundle\Shared\UserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**

@@ -7,7 +7,6 @@ use E7\MetaBundle\Entity\MetaType;
 use E7\MetaBundle\Shared\MetaAwareInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Psr\Log\LoggerInterface;
 use DateTime;
 use Symfony\Component\Security\Core\Security;

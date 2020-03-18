@@ -3,7 +3,7 @@
 namespace E7\MetaBundle\Shared;
 
 use DateTimeInterface;
-use E7\MetaBundle\Shared\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * ModifiedInterface

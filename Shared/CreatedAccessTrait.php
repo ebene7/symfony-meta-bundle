@@ -4,7 +4,7 @@ namespace E7\MetaBundle\Shared;
 
 use DateTime;
 use DateTimeInterface;
-use E7\MetaBundle\Shared\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Exception;
 
 /**
