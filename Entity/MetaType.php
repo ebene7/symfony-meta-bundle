@@ -15,7 +15,7 @@ class MetaType
     /**
      * @ORM\Id
      * @ORM\Column(type="bigint")
-     * @ORM\GeneratedValue(strategy="auto")
+     * @ORM\GeneratedValue
      */
     private $id;
 
