@@ -14,9 +14,8 @@ class MetaType
 {
     /**
      * @ORM\Id
-     * @ORM\Column(type="string", length=36)
-     * @ORM\GeneratedValue(strategy="UUID")
-     * @var string
+     * @ORM\Column(type="bigint")
+     * @ORM\GeneratedValue(strategy="auto")
      */
     private $id;
 
@@ -37,9 +36,6 @@ class MetaType
         $this->setType($type);
     }
 
-    /**
-     * @return string
-     */
     public function __toString()
     {
         return (string) $this->getType();
@@ -50,7 +46,7 @@ class MetaType
      *
      * @return string
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -61,7 +57,7 @@ class MetaType
      * @param string $type
      * @return MetaType
      */
-    public function setType($type)
+    public function setType(?string $type): self
     {
         $this->type = $type;
 
@@ -73,7 +69,7 @@ class MetaType
      *
      * @return string
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }

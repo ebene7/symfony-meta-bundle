@@ -4,7 +4,7 @@ namespace E7\MetaBundle\Entity\Traits;
 
 use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
-use E7\MetaBundle\Shared\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * CreatedPropertyTrait
@@ -14,7 +14,8 @@ use E7\MetaBundle\Shared\UserInterface;
 trait CreatedPropertyTrait
 {
     /**
-     * @ORM\Column(name="creator_id", type="entitystring", nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ ORM\Column(name="creator_id", type="entitystring", nullable=true)
      * @var UserInterface
      */
     private $creator;

@@ -22,16 +22,13 @@ class Meta implements MetaInterface
     
     /**
      * @ORM\Id
-     * @ORM\Column(type="string", length=36)
-     * @ORM\GeneratedValue(strategy="UUID")
-     * @var string
+     * @ORM\Column(type="bigint")
+     * @ORM\GeneratedValue(strategy="auto")
      */
     private $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="entity_id", type="string", length=36, nullable=true)
+     * @ORM\Column(name="entity_id", type="bigint", nullable=true)
      */
     private $entityId;
     
@@ -40,12 +37,17 @@ class Meta implements MetaInterface
         $this->setCreatedAt(new DateTime());
     }
 
+    public function __toString()
+    {
+        return sprintf("Meta:%s", $this->getId());
+    }
+
     /**
      * Get id
      *
-     * @return string
+     * @return integer
      */
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
@@ -53,10 +55,10 @@ class Meta implements MetaInterface
     /**
      * Set entityId
      *
-     * @param string $entityId
+     * @param integer $entityId
      * @return Meta
      */
-    public function setEntityId($entityId)
+    public function setEntityId(int $entityId): self
     {
         $this->entityId = $entityId;
 
@@ -66,9 +68,9 @@ class Meta implements MetaInterface
     /**
      * Get entityId
      *
-     * @return string
+     * @return integer
      */
-    public function getEntityId()
+    public function getEntityId(): int
     {
         return $this->entityId;
     }

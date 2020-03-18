@@ -3,7 +3,8 @@
 namespace E7\MetaBundle\Entity\Traits;
 
 use Doctrine\ORM\Mapping as ORM;
-use E7\MetaBundle\Shared\UserInterface;
+//use E7\MetaBundle\Shared\UserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * OwnerPropertyTrait
@@ -13,7 +14,8 @@ use E7\MetaBundle\Shared\UserInterface;
 trait OwnerPropertyTrait 
 {
     /**
-     * @ORM\Column(name="owner_id", type="entitystring", nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User")
+     * @ ORM\Column(name="owner_id", type="entitystring", nullable=true)
      * @var UserInterface
      */
     private $owner;
