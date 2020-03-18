@@ -10,30 +10,24 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Psr\Log\LoggerInterface;
 use DateTime;
-use E7\MetaBundle\DBAL\Converters\ChainConverter;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * MetaListener
  */
 class MetaListener
 {
-    /** @var ChainConverter */
-    private $converter;
+    /** @var Security */
+    private $security;
 
     /** @var $logger LoggerInterface */
     private $logger;
 
-    /**
-     * Constructor
-     *
-     * @param ChainConverter $tokenStorage
-     * @param LoggerInterface $logger
-     */
     public function __construct(
-        ChainConverter $converter,
+        Security $security,
         LoggerInterface $logger
     ) {
-        $this->converter = $converter;
+        $this->security = $security;
         $this->logger = $logger;
     }
 
