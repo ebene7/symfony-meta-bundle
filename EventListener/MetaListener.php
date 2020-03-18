@@ -46,8 +46,7 @@ class MetaListener
             return;
         }
 
-//        $user = $this->getUser($em);
-        $user = $entity->getOwner();
+        $user = $this->security->getOwner();
 
         if (null === ($meta = $entity->getMeta())) {
             $meta = new Meta();
@@ -90,6 +89,8 @@ class MetaListener
         $em = $event->getEntityManager();
         $entity = $event->getEntity();
         
+        $user = $this->security->getOwner();
+        
         if (!$this->acceptEntity($entity)) {
             return;
         }
@@ -118,7 +119,7 @@ class MetaListener
             return;
         }
 
-        $user = $this->getUser();
+        $user = $this->security->getOwner();
         
         if (null === ($meta = $entity->getMeta())) {
             $meta = new Meta();
