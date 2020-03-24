@@ -153,4 +153,55 @@ trait MetaAwareAccessTrait
         
         return $this;    
     }
+    
+    public function getIsDeleted(): bool
+    {
+        return $this->meta->getIsDeleted();
+    }
+    
+    public function setIsDeleted(bool $isDeleted): self
+    {
+        $this->meta->setIsDeleted($isDeleted);
+        
+        return $this;
+    }
+    
+    public function getDeleter(): ?UserInterface
+    {
+        return $this->meta->getDeleter();
+    }
+    
+    public function setDeleter(?UserInterface $deleter): self
+    {
+        $this->meta->setDeleter($deleter);
+        
+        return $this;
+    }
+    
+    public function getDeletedAt(): ?DateTimeInterface
+    {
+        return $this->meta->getDeletedAt();
+    }
+    
+    public function setDeletedAt(?DateTimeInterface $deletedAt): self
+    {
+        $this->meta->setDeletedAt($deletedAt);
+        
+        return $this;
+    }
+    
+    public function isDeleted(): bool
+    {
+        return $this->meta->isDeleted();
+    }
+    
+    public function markDeleted(
+        UserInterface $deleter, 
+        DateTimeInterface $deletedAt = null,
+        $overrideDeleter = false
+    ): self {
+        $this->meta->markDeleted($deleter, $deletedAt, $overrideDeleter);
+        
+        return $this;    
+    }
 }

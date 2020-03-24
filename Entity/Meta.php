@@ -18,6 +18,7 @@ class Meta implements MetaInterface
     use Traits\OwnerTrait;
     use Traits\CreatedTrait;
     use Traits\ModifiedTrait;
+    use Traits\DeletedTrait;
     use Traits\MetaTypeTrait;
     
     /**
