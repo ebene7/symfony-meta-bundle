@@ -38,3 +38,6 @@ services:
  
     E7\MetaBundle\EventSubscriber\ModifiedSubscriber:
         tags: ['doctrine.event_subscriber']
+        
+    E7\MetaBundle\EventSubscriber\OwnerSubscriber:
+        tags: ['doctrine.event_subscriber']

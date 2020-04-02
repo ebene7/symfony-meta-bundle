@@ -54,4 +54,6 @@ interface CreatedInterface
         DateTimeInterface $createdAt = null,
         $overrideCreator = false
     );
+    
+    public function resetCreated();
 }

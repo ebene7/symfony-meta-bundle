@@ -4,7 +4,7 @@ namespace E7\MetaBundle\EventSubscriber;
 
 use Doctrine\ORM\Events;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
-use E7\MetaBundle\Shared\CreatedInterface;
+use E7\MetaBundle\Shared\OwnerInterface;
 
 class CreatedSubscriber extends AbstractMetaSubscriber
 {
@@ -21,13 +21,15 @@ class CreatedSubscriber extends AbstractMetaSubscriber
             return;
         }
         
-        $args->getObject()
-             ->resetCreated()
-             ->markCreated($this->getUser());
+        $object = $args->getObject();
+        
+        if (empty($object->getOwner())) {
+            $object->setOwner($this->getOwner());
+        }
     }
     
     protected function supports($object): bool
     {
-        return $object instanceof CreatedInterface;
+        return $object instanceof OwnerInterface;
     }
 }
