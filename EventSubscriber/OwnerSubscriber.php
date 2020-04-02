@@ -23,7 +23,7 @@ class OwnerSubscriber extends AbstractMetaSubscriber
         
         $object = $args->getObject();
         
-        if (empty($object->getOwner())) {
+        if (empty($object->getUser())) {
             $object->setOwner($this->getOwner());
         }
     }
