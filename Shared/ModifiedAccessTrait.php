@@ -73,4 +73,12 @@ trait ModifiedAccessTrait
             ->setModifier($modifier)
             ->setModifiedAt($modifiedAt ?: new DateTime());    
     }
+    
+    public function resetModified()
+    {
+        $this->modifier = null;
+        $this->modifiedAt = null;
+        
+        return $this;
+    }
 }

@@ -81,4 +81,12 @@ trait CreatedAccessTrait
             ->setCreator($creator)
             ->setCreatedAt($createdAt ?: new DateTime());    
     }
+    
+    public function resetCreated()
+    {
+        $this->creator = null;
+        $this->createdAt = null;
+        
+        return $this;
+    }
 }
