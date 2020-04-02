@@ -7,4 +7,5 @@ trait MetaAccessTrait
     use OwnerTrait;
     use CreatedTrait;
     use ModifiedTrait;
+    use DeletedTrait;
 }
