@@ -6,7 +6,7 @@ use Doctrine\ORM\Events;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use E7\MetaBundle\Shared\OwnerInterface;
 
-class CreatedSubscriber extends AbstractMetaSubscriber
+class OwnerSubscriber extends AbstractMetaSubscriber
 {
     public function getSubscribedEvents()
     {
