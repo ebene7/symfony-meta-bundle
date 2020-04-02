@@ -7,7 +7,7 @@ use Doctrine\ORM\Events;
 use Doctrine\Persistence\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Security;
 
-class AbstractMetaSubscriber implements EventSubscriber
+abstract class AbstractMetaSubscriber implements EventSubscriber
 {
     private $security;
     
