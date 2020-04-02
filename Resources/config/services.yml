@@ -24,12 +24,6 @@ services:
              - { name: doctrine.event_listener, event: prePersist }
              - { name: doctrine.event_listener, event: postPersist }
              - { name: doctrine.event_listener, event: postUpdate }
-             
-    E7\MetaBundle\MetaSubscriber\CreatedSubscriber:
-        tags: ['doctrine.event_subscriber']
- 
-    E7\MetaBundle\MetaSubscriber\ModifiedSubscriber:
-        tags: ['doctrine.event_subscriber']
         
     E7\MetaBundle\EventListener\MappingListener:
         arguments:
@@ -38,3 +32,9 @@ services:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
             #- { name: doctrine.event_listener, event: !php/const:\E7\MetaBundle\DBAL\Event\TypeMapperEventArgs::NAME }
             - { name: doctrine.event_listener, event: onMapping }
+             
+    E7\MetaBundle\EventSubscriber\CreatedSubscriber:
+        tags: ['doctrine.event_subscriber']
+ 
+    E7\MetaBundle\EventSubscriber\ModifiedSubscriber:
+        tags: ['doctrine.event_subscriber']
