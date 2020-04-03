@@ -70,7 +70,7 @@ trait CreatedAccessTrait
      * @throws Exception
      */
     public function markCreated(
-        UserInterface $creator, 
+        UserInterface $creator = null, 
         DateTimeInterface $createdAt = null,
         $overrideCreator = false
     ) {
