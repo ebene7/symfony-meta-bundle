@@ -24,7 +24,7 @@ class CreatedSubscriber extends AbstractMetaSubscriber
         $entity = $args->getObject();
         $user = $this->getUser();
 
-        if ($entity->hasOwner()) {
+        if (!$entity->hasOwner()) {
             $entity->setOwner($user);
         }
 
