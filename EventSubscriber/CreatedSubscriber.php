@@ -20,10 +20,15 @@ class CreatedSubscriber extends AbstractMetaSubscriber
         if (!$this->supports($args->getObject())) {
             return;
         }
-        
-        $args->getObject()
-             ->resetCreated()
-             ->markCreated($this->getUser());
+
+        $entity = $args->getObject();
+        $user = $this->getUser();
+
+        if ($entity->hasOwner()) {
+            $entity->setOwner($user);
+        }
+
+        $args->getObject()->markCreated($user);
     }
     
     protected function supports($object): bool

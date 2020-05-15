@@ -34,4 +34,14 @@ trait OwnerAccessTrait
     {
         return $this->owner;
     }
+
+    /**
+     * Has owner
+     *
+     * @return bool
+     */
+    public function hasOwner(): bool
+    {
+        return null !== $this->owner;
+    }
 }

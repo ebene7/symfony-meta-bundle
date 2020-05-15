@@ -26,6 +26,13 @@ interface ModifiedInterface
     public function getModifier();
 
     /**
+     * Has modifier
+     *
+     * @return bool
+     */
+    public function hasModifier(): bool;
+
+    /**
      * Set modifiedAt
      *
      * @param DateTimeInterface $modifiedAt
@@ -49,4 +56,13 @@ interface ModifiedInterface
         UserInterface $modifier,
         DateTimeInterface $modifiedAt = null
     );
+
+    /**
+     * Is modified
+     *
+     * @return bool
+     */
+    public function isModified(): bool;
+
+    public function resetModified();
 }

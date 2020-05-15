@@ -27,6 +27,13 @@ interface CreatedInterface
     public function getCreator();
 
     /**
+     * Has creator
+     *
+     * @return bool
+     */
+    public function hasCreator(): bool;
+
+    /**
      * Set createdAt
      *
      * @param DateTimeInterface $createdAt
@@ -45,14 +52,14 @@ interface CreatedInterface
      * 
      * @param UserInterface $creator
      * @param DateTimeInterface $createdAt
-     * @param boolean $overrideCreator
+     * @param boolean $override
      * @return type
      * @throws Exception
      */
     public function markCreated(
         UserInterface $creator, 
         DateTimeInterface $createdAt = null,
-        $overrideCreator = false
+        $override = false
     );
     
     public function resetCreated();

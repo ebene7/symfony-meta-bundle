@@ -38,6 +38,16 @@ trait ModifiedAccessTrait
     }
 
     /**
+     * Has modifier
+     *
+     * @return bool
+     */
+    public function hasModifier(): bool
+    {
+        return null !== $this->modifier;
+    }
+
+    /**
      * Set modifiedAt
      *
      * @param DateTimeInterface $modifiedAt
@@ -74,6 +84,17 @@ trait ModifiedAccessTrait
             ->setModifiedAt($modifiedAt ?: new DateTime());    
     }
     
+    /**
+     * Is modified
+     *
+     * @return bool
+     */
+    public function isModified(): bool
+    {
+        return null !== $this->modifier
+            || null !== $this->modifiedAt;
+    }
+
     public function resetModified()
     {
         $this->modifier = null;

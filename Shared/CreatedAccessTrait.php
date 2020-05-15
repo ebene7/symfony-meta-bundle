@@ -39,6 +39,16 @@ trait CreatedAccessTrait
     }
 
     /**
+     * Has creator
+     *
+     * @return bool
+     */
+    public function hasCreator(): bool
+    {
+        return null !== $this->creator;
+    }
+
+    /**
      * Set createdAt
      *
      * @param DateTimeInterface $createdAt
@@ -65,21 +75,28 @@ trait CreatedAccessTrait
      * 
      * @param UserInterface $creator
      * @param DateTimeInterface $createdAt
-     * @param boolean $overrideCreator
+     * @param boolean $override
      * @return type
      * @throws Exception
      */
     public function markCreated(
         UserInterface $creator = null, 
         DateTimeInterface $createdAt = null,
-        $overrideCreator = false
+        $override = false
     ) {
         if (false === $overrideCreator && null !== $this->getCreator()) {
             throw new \Exception();
         }
-        return $this
-            ->setCreator($creator)
-            ->setCreatedAt($createdAt ?: new DateTime());    
+
+        if (!$this->hasCreator() || $override) {
+            $this->setCreator($creator);
+        }
+
+        if (null ===  $this->createdAt || $override) {
+            $this->setCreatedAt($createdAt ?: new DateTime());
+        }
+
+        return $this;
     }
     
     public function resetCreated()

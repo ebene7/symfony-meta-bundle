@@ -23,4 +23,11 @@ interface OwnerInterface
      * @return UserInterface
      */
     public function getOwner();
+
+    /**
+     * Has owner
+     *
+     * @return bool
+     */
+    public function hasOwner(): bool;
 }
