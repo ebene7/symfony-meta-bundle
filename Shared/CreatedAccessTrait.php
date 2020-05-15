@@ -77,17 +77,12 @@ trait CreatedAccessTrait
      * @param DateTimeInterface $createdAt
      * @param boolean $override
      * @return type
-     * @throws Exception
      */
     public function markCreated(
         UserInterface $creator = null, 
         DateTimeInterface $createdAt = null,
         $override = false
     ) {
-        if (false === $overrideCreator && null !== $this->getCreator()) {
-            throw new \Exception();
-        }
-
         if (!$this->hasCreator() || $override) {
             $this->setCreator($creator);
         }
