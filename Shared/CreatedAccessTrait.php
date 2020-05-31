@@ -79,7 +79,7 @@ trait CreatedAccessTrait
      * @return type
      */
     public function markCreated(
-        UserInterface $creator = null, 
+        ?UserInterface $creator = null, 
         DateTimeInterface $createdAt = null,
         $override = false
     ) {

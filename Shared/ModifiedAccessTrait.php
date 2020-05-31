@@ -76,7 +76,7 @@ trait ModifiedAccessTrait
      * @return type
      */
     public function markModified(
-        UserInterface $modifier,
+        ?UserInterface $modifier = null,
         DateTimeInterface $modifiedAt = null
     ) {
         return $this
